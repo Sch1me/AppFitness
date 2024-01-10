@@ -3,10 +3,12 @@ package com.example.appfitness
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.system.Os
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appfitness.ObjektniModel.OsobeModel
+import com.example.appfitness.ObjektniModel.VjezbeModel
 import com.example.appfitness.databinding.ActivityDodavanjeOsobeBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -27,10 +29,11 @@ class DodavanjeOsobeActivity : AppCompatActivity() {
         binding = ActivityDodavanjeOsobeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dataBase.addValueEventListener(object : ValueEventListener{
+        dataBase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    val a : List<OsobeModel> = snapshot.children.map { dataSnapshot -> dataSnapshot.getValue(OsobeModel::class.java)!! }
+                    val a : List<OsobeModel> = snapshot.children.map { dataSnapshot -> dataSnapshot.getValue(
+                        OsobeModel::class.java)!! }
                     val arrayAdapter : ArrayAdapter<OsobeModel> = a as ArrayAdapter<OsobeModel>
                     listaOsoba.addAll(a)
 
@@ -47,7 +50,8 @@ class DodavanjeOsobeActivity : AppCompatActivity() {
             if(binding.imeTxt.text.isEmpty() || binding.prezimeTxt.text.isEmpty() || binding.godineTxt.text.isEmpty() || binding.oibTxt.text.isEmpty()){
                 Toast.makeText(this@DodavanjeOsobeActivity, "Nisi unio sve",Toast.LENGTH_SHORT).show()
             }else{
-                val newOsoba = OsobeModel(binding.imeTxt.text.toString(),binding.prezimeTxt.text.toString(),binding.oibTxt.text.toString(),binding.godineTxt.text.toString())
+                val newOsoba = OsobeModel(binding.imeTxt.text.toString(),binding.prezimeTxt.text.toString(),
+                    binding.oibTxt.text.toString(),binding.godineTxt.text.toString())
                 listaOsoba.add(newOsoba)
                 dataBase.setValue(listaOsoba)
             }

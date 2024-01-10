@@ -2,7 +2,7 @@ package com.example.appfitness.ObjektniModel
 
 data class VjezbeModel(
     var imeVjezbe : String,
-    var brojPonavljanja : Int,
-    var brojSerija : Int,
+    var brojPonavljanja : String,
+    var brojSerija : String,
     var vrstaVjezbe : String
 )
