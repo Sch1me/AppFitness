@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="25dp"/>
+        android:layout_marginStart="25dp"
+        android:layout_marginVertical="10dp"/>
 
     <TextView
         android:id="@+id/textViewPrezime"
@@ -23,7 +24,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewIme"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginVertical="10dp"/>
 
     <TextView
         android:id="@+id/textViewGodine"
@@ -33,7 +35,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textViewOIB"
-        android:layout_marginEnd="50dp"/>
+        android:layout_marginEnd="50dp"
+        android:layout_marginVertical="10dp"/>
 
     <TextView
         android:id="@+id/textViewOIB"
@@ -43,5 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="25dp"/>
+        android:layout_marginEnd="25dp"
+        android:layout_marginVertical="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

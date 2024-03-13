@@ -30,22 +30,22 @@ class DodavanjeOsobeActivity : AppCompatActivity() {
         binding = ActivityDodavanjeOsobeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         dataBase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
                     val a : List<OsobeModel> = snapshot.children.map { dataSnapshot -> dataSnapshot.getValue(
                         OsobeModel::class.java)!! }
-                    val arrayAdapter : ArrayAdapter<OsobeModel> = a as ArrayAdapter<OsobeModel>
                     listaOsoba.addAll(a)
 
                 }catch (_: Exception){}
 
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@DodavanjeOsobeActivity,"Failed With Database",Toast.LENGTH_SHORT).show()
             }
         })
+
 
         binding.dodajButton.setOnClickListener {
             if(binding.imeTxt.text.isEmpty() || binding.prezimeTxt.text.isEmpty() || binding.godineTxt.text.isEmpty() || binding.oibTxt.text.isEmpty()){
@@ -57,8 +57,8 @@ class DodavanjeOsobeActivity : AppCompatActivity() {
                 dataBase.setValue(listaOsoba)
             }
 
-
         }
+
         binding.nazadButton.setOnClickListener {
             intent = Intent(this,OsobeActivity::class.java)
             startActivity(intent)

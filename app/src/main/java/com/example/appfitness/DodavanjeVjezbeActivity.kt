@@ -29,18 +29,18 @@ class DodavanjeVjezbeActivity : AppCompatActivity() {
         dataBase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 try {
-                    val a : List<VjezbeModel> = snapshot.children.map { dataSnapshot -> dataSnapshot.getValue(VjezbeModel::class.java)!! }
-                    val arrayAdapter : ArrayAdapter<VjezbeModel> = a as ArrayAdapter<VjezbeModel>
+                    val a : List<VjezbeModel> = snapshot.children.map { dataSnapshot -> dataSnapshot.getValue(
+                        VjezbeModel::class.java)!! }
                     listaVjezbi.addAll(a)
 
                 }catch (_: Exception){}
 
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@DodavanjeVjezbeActivity,"Failed With Database",Toast.LENGTH_SHORT).show()
             }
         })
+
 
         binding.dodajButton.setOnClickListener {
             if(binding.imeTxt.text.isEmpty() || binding.brojPonavljanjaTxt.text.isEmpty() || binding.brojSerijaTxt.text.isEmpty() || binding.vrstaVjezbeTxt.text.isEmpty()){
@@ -52,13 +52,12 @@ class DodavanjeVjezbeActivity : AppCompatActivity() {
                 dataBase.setValue(listaVjezbi)
             }
 
-
         }
+
         binding.nazadButton.setOnClickListener {
-            intent = Intent(this,OsobeActivity::class.java)
+            intent = Intent(this,VjezbeActivity::class.java)
             startActivity(intent)
         }
-
 
     }
 }

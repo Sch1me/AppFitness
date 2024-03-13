@@ -11,22 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dodaj"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/obrisiButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="200dp"/>
+        android:layout_margin="10dp"
+        />
 
     <Button
         android:id="@+id/obrisiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Obrisi"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/izmjeniButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_margin="10dp"
+
         />
 
     <Button
@@ -34,29 +32,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Izmjeni"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nazadButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="100dp" />
+        android:layout_margin="10dp"
+         />
 
     <Button
         android:id="@+id/nazadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nazad"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="350dp" />
+        android:layout_margin="10dp"
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listaOsoba"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="5dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="5dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

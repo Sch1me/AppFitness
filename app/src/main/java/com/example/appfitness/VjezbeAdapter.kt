@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import java.lang.Exception
 
 private val dataBase: DatabaseReference =
-    FirebaseDatabase.getInstance("https://appfitness-68156-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Vjezbe")
+    FirebaseDatabase.getInstance("https://appfitness-68156-default-rtdb.europe-west1.firebasedatabase.app/").getReference("IndexVjezbe")
 
 class VjezbeAdapter(
     private val vjezbeList: ArrayList<VjezbeModel>,
@@ -31,7 +31,7 @@ class VjezbeAdapter(
     }
 
     override fun onBindViewHolder(holder: VjezbeAdapter.ViewHolder, position: Int) {
-        holder.bindItem(vjezbeList[position], th)
+        holder.bindItem(vjezbeList[position], th,position)
     }
 
     override fun getItemCount(): Int {
@@ -40,25 +40,14 @@ class VjezbeAdapter(
 
     class ViewHolder(private var itemBinding: VjezbeItemBinding):
         RecyclerView.ViewHolder(itemBinding.root){
-        fun bindItem(vjezbeModel: VjezbeModel, th: Context){
-
-            dataBase.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    try {
-                        itemBinding.textViewImeVjezbe.text = snapshot.child("imeVjezbe").getValue().toString()
-                        itemBinding.textViewBrojSerija.text = snapshot.child("brojSerija").getValue().toString()
-                        itemBinding.textViewBrojPonavljanja.text = snapshot.child("brojPonavljanja").getValue().toString()
-                        itemBinding.textViewVrstaVjezbe.text = snapshot.child("vrstaVjezbe").getValue().toString()
-
-                    }catch (_: Exception){}
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(th,"Failed with database",Toast.LENGTH_SHORT).show()
-                }
-            })
-
+        fun bindItem(vjezbeModel: VjezbeModel, th: Context, position: Int){
+            itemBinding.textViewImeVjezbe.text = vjezbeModel.imeVjezbe
+            itemBinding.textViewBrojPonavljanja.text = vjezbeModel.brojPonavljanja
+            itemBinding.textViewBrojSerija.text = vjezbeModel.brojSerija
+            itemBinding.textViewVrstaVjezbe.text = vjezbeModel.vrstaVjezbe
+            itemBinding.root.setOnClickListener {
+                dataBase.child("indexi").setValue(position)
+            }
         }
     }
 
