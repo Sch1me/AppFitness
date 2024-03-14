@@ -23,6 +23,8 @@ class VjezbeActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance("https://appfitness-68156-default-rtdb.europe-west1.firebasedatabase.app/").getReference("IndexVjezbe")
     var listaVjezbi = ArrayList<VjezbeModel>()
     var indexVjezbe : Int = 0
+    var listaVjezbi2 = ArrayList<VjezbeModel>()
+    var i : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityVjezbeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -65,6 +67,26 @@ class VjezbeActivity : AppCompatActivity() {
         binding.nazadButton.setOnClickListener {
             intent = Intent(this,PocetnaActivity::class.java)
             startActivity(intent)
+        }
+        binding.izmjeniButton.setOnClickListener {
+            intent = Intent(this@VjezbeActivity, izmjenaVjezbeActivity::class.java)
+            startActivity(intent)
+        }
+        binding.obrisiButton.setOnClickListener {
+
+            while (i < listaVjezbi.size){
+                if(i != indexVjezbe){
+                    listaVjezbi2.add(listaVjezbi[i])
+                }else{
+
+                }
+                i++
+            }
+            dataBase.setValue(listaVjezbi2)
+            listaVjezbi.clear()
+            val emptyAdapter = VjezbeAdapter(listaVjezbi,this@VjezbeActivity)
+            ucitavaRVvjezbi(listaVjezbi2)
+            listaVjezbi2.clear()
         }
     }
 
